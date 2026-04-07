@@ -21,7 +21,7 @@ public class Main {
         int val = 1;
         int top = 0, bottom = n - 1, left = 0, right = n - 1;
 
-        // 1. Fill the spiral matrix
+        // 1. Fill the spiral matrix exactly as required
         while (val <= n * n) {
             for (int i = left; i <= right; i++) matrix[top][i] = val++;
             top++;
@@ -37,19 +37,20 @@ public class Main {
             }
         }
 
-        // 2. Print matrix and calculate ONLY the main diagonal
-        long mainDiagonalSum = 0;
+        // 2. Print matrix and calculate the "X" diagonal sum (Main + Anti-Diagonal)
+        long totalDiagonalSum = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 System.out.print(matrix[i][j] + (j == n - 1 ? "" : " "));
-                // Main diagonal is ONLY where row index equals column index
-                if (i == j) {
-                    mainDiagonalSum += matrix[i][j];
+                
+                // Sum both the main diagonal (i == j) and anti-diagonal (i + j == n - 1)
+                if (i == j || (i + j) == n - 1) {
+                    totalDiagonalSum += matrix[i][j];
                 }
             }
             System.out.println();
         }
         
-        System.out.println("Diagonal: " + mainDiagonalSum);
+        System.out.println("Diagonal: " + totalDiagonalSum);
     }
 }
