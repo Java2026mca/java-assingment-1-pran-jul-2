@@ -1,9 +1,34 @@
-import java.util.*;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+
+        int size = 2 * n - 1;
+
+        for (int i = 0; i < size; i++) {
+            int spaces = Math.abs(n - 1 - i);
+            int middle = size - 2 * spaces;
+
+            // left spaces
+            for (int j = 0; j < spaces; j++) {
+                System.out.print(" ");
+            }
+
+            // stars
+            for (int j = 0; j < middle; j++) {
+                if (j == 0 || j == middle - 1) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+
+            System.out.println();
+        }
+    }
+}
 
         // TODO: Print a hollow diamond pattern of half-height n using '*'
         //
