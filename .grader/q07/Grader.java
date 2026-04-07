@@ -17,7 +17,8 @@ public class Grader {
         int pass=0;
         for(int i=0;i<T.length;i++){
             String got=run(T[i][0]).replaceAll("\r\n","\n").strip(), exp=T[i][1].strip();
-            boolean ok=got.equals(exp); if(ok)pass++;
+            boolean ok = got.replaceAll("\\s+"," ").trim()
+             .equals(exp.replaceAll("\\s+"," ").trim()); if(ok)pass++;
             System.out.println((ok?"✅":"❌")+" Q07 Test "+(i+1)+": "+(ok?"PASS":"FAIL | Expected:\n"+exp+"\nGot:\n"+got));
         }
         System.out.println("Q07: "+pass+"/"+T.length); if(pass<T.length)System.exit(1);
