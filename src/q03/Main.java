@@ -37,13 +37,13 @@ public class Main {
         long diagonalSum = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                System.out.print(matrix[i][j] + (j == n - 1 ? "" : " "));
+                System.out.print(matrix[i][j] + (j == n - 1 ? " " : " "));
                 if (i == j) {
                     diagonalSum += matrix[i][j];
                 }
             }
-            System.out.println();
+            System.out.print();
         }
-        System.out.println("Diagonal: " + diagonalSum);
+        System.out.print("Diagonal: " + diagonalSum);
     }
 }
