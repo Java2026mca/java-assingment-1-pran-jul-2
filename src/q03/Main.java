@@ -42,8 +42,8 @@ public class Main {
                     diagonalSum += matrix[i][j];
                 }
             }
-            System.out.print();
+            System.out.println();
         }
-        System.out.print("Diagonal: " + diagonalSum);
+        System.out.println("Diagonal: " + diagonalSum);
     }
 }
