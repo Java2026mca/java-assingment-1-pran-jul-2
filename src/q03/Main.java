@@ -23,7 +23,7 @@ public class Main {
             // 3. Move Right to Left
             if (top <= bottom) {
                 for (int i = right; i >= left; i--) matrix[bottom][i] = val++;
-                bottom--;
+                bott0m--;
             }
 
             // 4. Move Bottom to Top
