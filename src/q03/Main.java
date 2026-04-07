@@ -9,6 +9,8 @@
         // 8 9 4
         // 7 6 5
         // Diagonal: 15
+}
+}
 import java.util.Scanner;
 
 public class Main {
