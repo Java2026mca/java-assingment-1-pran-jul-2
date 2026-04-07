@@ -1,3 +1,19 @@
+
+        // TODO: Print a hollow diamond pattern of half-height n using '*'
+        //
+        // Rules:
+        //   - Only border cells have '*', inside is spaces
+        //   - No trailing spaces on any line
+        //
+        // Input: 4
+        // Output:
+        //    *
+        //   * *
+        //  *   *
+        // *     *
+        //  *   *
+        //   * *
+        //    *
 import java.io.*;
 
 public class Main {
@@ -27,24 +43,5 @@ public class Main {
 
             System.out.println();
         }
-    }
-}
-
-        // TODO: Print a hollow diamond pattern of half-height n using '*'
-        //
-        // Rules:
-        //   - Only border cells have '*', inside is spaces
-        //   - No trailing spaces on any line
-        //
-        // Input: 4
-        // Output:
-        //    *
-        //   * *
-        //  *   *
-        // *     *
-        //  *   *
-        //   * *
-        //    *
-
     }
 }
