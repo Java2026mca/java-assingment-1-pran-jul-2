@@ -14,47 +14,49 @@
         // Output:
         // 19 22
         // 43 50
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        
         if (!sc.hasNextInt()) return;
+        int n = sc.nextInt();
+        
+        int[][] a = new int[n][n];
+        int[][] b = new int[n][n];
+        int[][] c = new int[n][n];
 
-        int numCommands = sc.nextInt();
-        Stack<Integer> stack = new Stack<>();
-
-        for (int i = 0; i < numCommands; i++) {
-            if (!sc.hasNext()) break;
-            String command = sc.next().toUpperCase();
-
-            switch (command) {
-                case "PUSH":
-                    int val = sc.nextInt();
-                    stack.push(val);
-                    break;
-
-                case "POP":
-                    if (stack.isEmpty()) {
-                        System.out.println("EMPTY");
-                    } else {
-                        System.out.println(stack.pop());
-                    }
-                    break;
-
-                case "PEEK":
-                    if (stack.isEmpty()) {
-                        System.out.println("EMPTY");
-                    } else {
-                        System.out.println(stack.peek());
-                    }
-                    break;
-
-                case "SIZE":
-                    System.out.println(stack.size());
-                    break;
+        // Read Matrix A
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (sc.hasNextInt()) a[i][j] = sc.nextInt();
             }
         }
+
+        // Read Matrix B
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (sc.hasNextInt()) b[i][j] = sc.nextInt();
+            }
+        }
+
+        // Multiply A and B
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < n; k++) {
+                    c[i][j] += a[i][k] * b[k][j];
+                }
+            }
+        }
+
+        // Print Result
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(c[i][j] + (j == n - 1 ? "" : " "));
+            }
+            System.out.println();
+        }
+        sc.close();
     }
 }
