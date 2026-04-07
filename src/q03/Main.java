@@ -1,49 +1,61 @@
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         if (!sc.hasNextInt()) return;
-
-        int count = sc.nextInt();
-        for (int i = 0; i < count; i++) {
-            if (!sc.hasNextLong()) break;
-            long num = sc.nextLong();
-            System.out.println(checkNumber(num));
-        }
-    }
-
-    private static String checkNumber(long n) {
-        if (n <= 1) return "Neither";
-
-        if (isPerfect(n)) return "Perfect";
-        if (isPrime(n)) return "Prime";
+        int n = sc.nextInt();
         
-        return "Neither";
-    }
+        int[][] matrix = new int[n][n];
+        int val = 1;
+        int top = 0, bottom = n - 1, left = 0, right = n - 1;
 
-    private static boolean isPrime(long n) {
-        if (n < 2) return false;
-        if (n == 2 || n == 3) return true;
-        if (n % 2 == 0 || n % 3 == 0) return false;
-        for (long i = 5; i * i <= n; i += 6) {
-            if (n % i == 0 || n % (i + 2) == 0) return false;
-        }
-        return true;
-    }
+        // Fill the matrix in a clockwise spiral
+        while (val <= n * n) {
+            // Move Right
+            for (int i = left; i <= right; i++) {
+                matrix[top][i] = val++;
+            }
+            top++;
 
-    private static boolean isPerfect(long n) {
-        if (n < 6) return false;
-        long sum = 1;
-        for (long i = 2; i * i <= n; i++) {
-            if (n % i == 0) {
-                sum += i;
-                if (i * i != n) {
-                    sum += n / i;
+            // Move Down
+            for (int i = top; i <= bottom; i++) {
+                matrix[i][right] = val++;
+            }
+            right--;
+
+            // Move Left
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) {
+                    matrix[bottom][i] = val++;
                 }
+                bottom--;
+            }
+
+            // Move Up
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    matrix[i][left] = val++;
+                }
+                left++;
             }
         }
-        return sum == n;
+
+        long diagonalSum = 0;
+        // Print the matrix and calculate the Main Diagonal (i == j)
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(matrix[i][j]);
+                if (j < n - 1) System.out.print(" ");
+                
+                if (i == j) {
+                    diagonalSum += matrix[i][j];
+                }
+            }
+            System.out.println();
+        }
+
+        System.out.println("Diagonal: " + diagonalSum);
+        sc.close();
     }
 }
